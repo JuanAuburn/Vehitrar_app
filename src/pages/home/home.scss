@@ -1,0 +1,73 @@
+page-home {
+  ion-icon{
+    padding-left: 10px;
+    font-size: 1.5em;
+  }
+
+  .vehicleItem{
+    background-color: rgba(255,255,255, 0.4);
+    border-bottom: solid;
+    margin-bottom: 5px;
+  }
+  .vehicleItem:active {
+    transition: all 0.12s;
+    transition-timing-function: ease-out;
+    background-color: #DDD;
+  }
+
+  .vehicleItemImg{
+    width: 100%;
+  }
+
+  .editOnStyle1{
+    visibility: hidden;
+    opacity:0;
+    transition: opacity 500ms, visibility 0ms ease 500ms;
+  }
+  .editOffStyle1{
+    visibility: inherit;
+    opacity:1;
+    transition: opacity 500ms, visibility 0ms ease 500ms;
+    transition-delay: 400ms;
+  }
+
+  .editOnStyle2{
+    visibility: hidden;
+    opacity:0;
+    transition: opacity 500ms, visibility 0ms ease 500ms;
+  }
+  .editOffStyle2{
+    visibility: inherit;
+    opacity:1;
+    transition: opacity 500ms, visibility 0ms ease 500ms;
+    transition-delay: 400ms;
+  }
+
+  .toolbar{
+    width: 100%;
+    background-color: rgba(255,255,255,0);
+    height: 55px !important;
+  }
+
+  .toolbar1{
+    margin-top: -35px;
+    background-color: rgba(255,255,255,0);
+    position: absolute;
+  }
+
+  .toolbar2{
+    margin-top: -35px;
+    background-color: rgba(255,255,255,0);
+    position: absolute;
+  }
+
+  .editOnStyleBody{
+    background-color: rgb(210,237,247);
+    transition: all 1000ms;
+  }
+  .editOffStyleBody{
+    background-color: white;
+    transition: all 1000ms linear;
+  }
+
+}

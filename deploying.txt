@@ -1,0 +1,6 @@
+ionic cordova build android --prod --release
+cd platforms/android/app/build/outputs/apk/release
+    copy here the file vehitrar-key.jks
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vehitrar-key.jks app-release-unsigned.apk vehitrar
+zipalign -v 4 app-release-unsigned.apk Vehitrar.apk
+apksigner verify Vehitrar.apk

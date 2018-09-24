@@ -1,0 +1,40 @@
+<ion-menu type="overlay" [content]="mycontent" id="mycontent">
+  <ion-header style="background-color: #000;" menuToggle>
+    <h1 style="color: #FFF;" text-center>
+      Menu
+    </h1>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+
+      <button ion-item (click)="home()" detail-none>
+        <ion-icon name="home" item-start></ion-icon>
+        Página principal
+      </button>
+
+      <!--
+      <button ion-item (click)="myProfile()" detail-none>
+        <ion-icon name="md-person" item-start></ion-icon>
+        Mi perfil
+      </button>
+      -->
+
+      <button ion-item (click)="aboutUs()" detail-none>
+        <ion-icon name="ios-beer" item-start></ion-icon>
+        Acerca de nosotros
+      </button>
+
+      <button ion-item (click)="logout()" detail-none>
+        <ion-icon name="md-close-circle" item-start></ion-icon>
+        Cerrar sesión
+      </button>
+    </ion-list>
+  </ion-content>
+  <ion-footer style="background-color: #000" text-right no-padding>
+    <p style="color: #FFF; font-size: 20px; font-style: italic; font-weight: bold;" no-padding>
+      by: <img style="vertical-align: text-bottom;" src="../assets/img/logo_lab.png" width="60" no-padding>
+    </p>
+  </ion-footer>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

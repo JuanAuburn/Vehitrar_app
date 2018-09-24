@@ -1,0 +1,28 @@
+
+Vehitrar
+
+
+
+Administrar tus vehículos, disfruta de varias funcionalidades :)
+
+
+
+Vehitrar es un aplicativo en el que puedes llevar un control de tus vehículos, haciendo uso de varias funcionalidades como:
+
+- Registro de repostados (tanqueos):
+Puedes llevar registro de cada vez que repostas tu vehículo,y así puedes saber cuanta cantidad de combustible esta consumiendo, y cuanto estas gastando en determinado tiempo.
+
+-Registro de refacciones (Próximamente):
+Toma apuntes de que piezas haz comprado, también cuando las instalaste, siempre esta bien tener presente que le ponemos a nuestros vehículos.
+
+-Cambios de aceite (Próximamente):
+Es bueno tener presente cuando es tiempo de un cambio de aceite o filtros, siempre que un vehículo tenga un correcto mantenimiento, va a durar mucho más.
+
+-SOAT (Próximamente):
+El Seguro obligatorio en Colombia es exigido para poder circular los vehículos, también la revisión técnico mecánica, un recordatorio de cuando están cerca de expirar estos documentos pueden ser de gran utilidad, y nos pueden ahorrar multas.
+
+Estas funciones próximamente estarán disponibles en la Play Store.
+
+En caso de cualquier comentario o solicitud, escribanos vamos a tener en cuenta cualquier recomendación.
+ 
+De parte de LabJ3 con <3

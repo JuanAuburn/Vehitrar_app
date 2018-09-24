@@ -1,0 +1,42 @@
+<ion-content padding class="body" (click)="closeOut($event)">
+  <span></span>
+
+  <ion-card class="singIn_form" text-center>
+
+    <ion-card-header text-center>
+      Registrarme
+      <ion-icon class="closeButton" (click)="close()" name="close"></ion-icon>
+    </ion-card-header>
+
+    <ion-list no-lines>
+
+      <ion-item>
+        <ion-input class="input" [(ngModel)]="email" type="text" placeholder="Email" (keyup)="checkEmail()" [class.myInvalid]="inValidEmail"></ion-input>
+      </ion-item>
+      <p text-left *ngIf="inValidEmail" style="color:gray;">{{inValidEmailMessage}}</p>
+
+      <ion-item>
+        <ion-input [(ngModel)]="password1" [type]="passwordType1" placeholder="Password" (keyup)="checkPassword1()" [class.myInvalid]="inValidPassword1"></ion-input>
+        <button ion-button clear item-end (click)='showHidePassword1()' style="height:32px; color: gray;">
+          <ion-icon [name]="passwordIcon1" style="font-size:32px;"></ion-icon>
+        </button>
+      </ion-item>
+      <p text-left *ngIf="inValidPassword1" style="color:gray;">{{inValidPassword1Message}}</p>
+
+      <ion-item>
+        <ion-input [(ngModel)]="password2" [type]="passwordType2" placeholder="Repeat Password" (keyup)="checkPassword2()" [class.myInvalid]="inValidPassword2" [disabled]="inValidPassword1 || password1.length < 6"></ion-input>
+        <button ion-button clear item-end (click)='showHidePassword2()' style="height:32px; color: gray;">
+          <ion-icon [name]="passwordIcon2" style="font-size:32px;"></ion-icon>
+        </button>
+      </ion-item>
+      <p text-left *ngIf="inValidPassword2" style="color:gray;">{{inValidPassword2Message}}</p>
+
+    </ion-list>
+
+    <button ion-button color="secondary" class="button" (click)="registerUser()" [disabled]="email.length == 0 || password1.length < 6 || password1 != password2 || inValidEmail || inValidPassword1 || inValidPassword2">
+      Registrarme <ion-spinner class="sing_up_button_spinner" name="bubbles" *ngIf="loading_sing_up"></ion-spinner>
+    </button>
+
+  </ion-card>
+
+</ion-content>

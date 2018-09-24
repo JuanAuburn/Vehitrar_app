@@ -1,0 +1,44 @@
+<ion-content pseting class="body">
+  <span></span>
+
+  <ion-card class="editRefaction_form" text-center>
+
+    <ion-card-header text-center>
+      Editar refacción
+      <ion-icon class="closeButton" (click)="close()" name="close"></ion-icon>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item-divider color="light">Nombre del repuesto</ion-item-divider>
+      <ion-input [(ngModel)]="refaction.name" type="text" placeholder="Tuerca ..."></ion-input>
+
+      <ion-item-divider color="light">Descripción</ion-item-divider>
+      <ion-item>
+        <ion-textarea [(ngModel)]="refaction.description" placeholder="descripción"></ion-textarea>
+      </ion-item>
+
+      <ion-item-divider color="light">Kilometraje actual del vehículo</ion-item-divider>
+      <ion-input [(ngModel)]="refaction.mileage" type="number" placeholder="20000"></ion-input>
+
+      <ion-item-divider color="light">Precio del repuesto</ion-item-divider>
+      <ion-input [(ngModel)]="refaction.price" type="number" placeholder="32500"></ion-input>
+
+      <ion-item-divider color="light">Fecha del repuesto</ion-item-divider>
+      <ion-item>
+        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="YYYY-MM-DD HH:mm" max="{{dateNow}}" [(ngModel)]="date" (ngModelChange)="updateDate()"></ion-datetime>
+      </ion-item>
+
+    </ion-card-content>
+
+    <div (click)="checkAndAlert()">
+      <button ion-button color="primary" class="button" (click)="setRefaction()" [disabled]="refaction.name==null||refaction.name=='' || refaction.mileage==null||refaction.mileage==0 || refaction.price==null||this.refaction.price==0 || refaction.timestamp==null||this.refaction.timestamp==0">
+        <div class="center-vertical-horizontal">
+          Guardar Cambios &nbsp; <ion-spinner class="button-spinner editRefaction_button_spinner" name="bubbles" *ngIf="loading_set"></ion-spinner>
+        </div>
+      </button>
+    </div>
+
+  </ion-card>
+
+</ion-content>

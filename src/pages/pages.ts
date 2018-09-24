@@ -1,0 +1,16 @@
+export { SingInPage } from "./sing-in/sing-in";
+export { SingUpPage } from "./sing-up/sing-up";
+export { HomePage } from "./home/home";
+export { MyProfilePage } from "./my-profile/my-profile";
+export { AboutUsPage } from "./about-us/about-us";
+export { NewVehiclePage } from "./new-vehicle/new-vehicle";
+export { EditVehiclesPage } from "./edit-vehicles/edit-vehicles";
+export { VehiclePage } from "./vehicle/vehicle";
+export { ChangeOilPage } from "./change-oil/change-oil";
+export { RefactionPage } from "./refaction/refaction";
+export { RefuelPage } from "./refuel/refuel";
+export { SoatTecPage } from "./soat-tec/soat-tec";
+export { NewRefuelPage } from "./new-refuel/new-refuel";
+export { EditRefuelPage } from "./edit-refuel/edit-refuel";
+export { NewRefactionPage } from "./new-refaction/new-refaction";
+export { EditRefactionPage } from "./edit-refaction/edit-refaction";

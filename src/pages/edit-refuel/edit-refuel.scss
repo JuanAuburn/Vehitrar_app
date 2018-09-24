@@ -1,0 +1,94 @@
+page-edit-refuel {
+
+  .body {
+    background-color: rgba(30,144,222,0.4);
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .body span{
+    height: 100%;
+    width: 1px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+
+  .editRefuel_form{
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 20px;
+    margin-top: 0;
+    margin-left: 1px;
+    width: 94%;
+    background: white;
+    padding: 0 !important;
+  }
+
+  .editRefuel_form ion-card-header{
+    font-size: large;
+    font-weight: bold;
+    background-color: map-get($colors, primary);
+  }
+
+  .editRefuel_form ion-card-content{
+    padding: 0 !important;
+  }
+
+  .editRefuel_form ion-item-divider{
+    width: 100% !important;
+    padding-top: 0 !important;
+  }
+
+  .editRefuel_form ion-input{
+    background-color: secondary;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 1.5em;
+  }
+
+  .type_car{
+    background-color: #F0F0F0;
+    border-radius: 20px;
+    width: 95%;
+    margin: 0;
+  }
+
+  .type_car_selected{
+    background-color: map-get($colors, secondary);
+  }
+
+  .closeButton{
+    float: right;
+    font-size:32px;
+  }
+
+  .button{
+    width: 170px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .myInvalid{
+    border-left:5px solid red;
+  }
+
+  .center-vertical-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button-spinner {
+    display: flex;
+  }
+  .editRefuel_button_spinner * {
+    stroke: white;
+    fill: white;
+  }
+
+}

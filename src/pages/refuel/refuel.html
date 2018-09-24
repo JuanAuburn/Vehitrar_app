@@ -1,0 +1,141 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Repostados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content [class.editOnStyleBody]="editOn" [class.editOffStyleBody]="!editOn">
+
+  <ion-toolbar class="toolbar">
+
+    <ion-grid class="toolbar1" [class.editOnStyle1]="editOn" [class.editOffStyle1]="!editOn">
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="secondary" (click)="newRefuel()">
+            Nuevo
+            <ion-icon name="md-add-circle" end></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block color="primary" (click)="editRefuels()">
+            Editar
+            <ion-icon name="build" end></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="toolbar2" [class.editOnStyle2]="!editOn" [class.editOffStyle2]="editOn">
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="primary" (click)="editRefuels()">
+            Editar
+            <ion-icon name="build" end></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-auto>
+          <button ion-button icon-only color="light" (click)="editRefuels()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-row align-items-center>
+          <ion-col col-auto>
+            <ion-checkbox slot="end" [(ngModel)]="ActiveStartDate" (ngModelChange)="onChange()"></ion-checkbox>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Desde</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="YYYY-MM-DD" [(ngModel)]="startDate" [disabled]="!ActiveStartDate" (ngModelChange)="onChange()"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-row align-items-center>
+          <ion-col col-auto>
+            <ion-checkbox slot="end" [(ngModel)]="ActiveEndDate" (ngModelChange)="onChange()"></ion-checkbox>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>Hasta</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="YYYY-MM-DD" [(ngModel)]="endDate" [disabled]="!ActiveEndDate" (ngModelChange)="onChange()"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngFor="let refuel of refuels">
+    <button class="refuelItem" style="width: 100%">
+      <ion-grid>
+        <ion-row align-items-center>
+          <ion-col col-4 col-md-3 col-lg-2 (click)="openRefuel(refuel)">
+            <p>{{ dateFunctions.getDay(refuel.timestamp) }}</p>
+            <p>{{ dateFunctions.getDDMMYYYY(refuel.timestamp) }}</p>
+            <p>{{ dateFunctions.getHHSS(refuel.timestamp) }}</p>
+          </ion-col>
+          <ion-col (click)="openRefuel(refuel)">
+            <p>Cantidad: {{ refuel.gallons }}</p>
+            <p>Precio: {{ refuel.price }}</p>
+            <p>Kilometraje {{ refuel.mileage }}</p>
+          </ion-col>
+          <ion-col col-auto>
+            <div class="texto-vertical texto-vertical-{{refuel.gasolineType}}">{{refuel.gasolineType}}</div>
+          </ion-col>
+          <ion-col col-auto *ngIf="editOn">
+            <button ion-button icon-only color="primary" *ngIf="editOn" (click)="editRefuel(refuel)">
+              <ion-icon name="build"></ion-icon>
+            </button><br>
+            <button ion-button icon-only color="danger" *ngIf="editOn" (click)="deleteRefuel(refuel)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </button>
+  </div>
+
+  <div text-center>
+    <h1 *ngIf="refuels.length == 0 && !ViewLoadMore" style="color: gray;">
+      No hay elementos
+    </h1>
+  </div>
+
+  <div class="row" text-center>
+    <div class="col">
+      <button roundoutline ion-button color="secondary" class="button" (click)="loadMore()" [disabled]="LoadMore" *ngIf="ViewLoadMore">
+        <div class="center-vertical-horizontal">
+          Cargar mas &nbsp; <ion-spinner class="button-spinner loadMore_button_spinner" name="bubbles" *ngIf="LoadMore"></ion-spinner>
+        </div>
+      </button>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col col-4 col-md-3 col-lg-2>
+        <img class="vehicleItemImg" src="assets/imgs/types_of_vehicles/{{vehicle.type}}.png" alt="{{vehicle.type}}">
+      </ion-col>
+      <ion-col>
+        <p><b>Galones repostados: </b> {{ gallonsSumary }}</p>
+        <p><b>Precio total: </b> {{ priceSumary }}</p>
+        <p><b>Total de kilometros: </b> {{ mileageSumary }}</p>
+        <p><b>Kilometros por Galon (aprox): </b> {{ mileageGallonsSumary }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

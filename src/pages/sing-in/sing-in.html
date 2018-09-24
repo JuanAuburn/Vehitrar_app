@@ -1,0 +1,80 @@
+<ion-content class="body">
+
+  <div class="div_logo" text-center>
+    <span></span>
+    <img src="../assets/img/logo.png" alt="logo">
+  </div>
+
+  <div class="div_form">
+    <span></span>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="items_form">
+      <ion-card class="login_form" text-center>
+
+        <ion-card-header text-center>
+          Iniciar sesión
+        </ion-card-header>
+
+        <ion-list no-lines>
+
+          <input type="email" placeholder="Email" [(ngModel)]="email" name="email" formControlName="email" [class.myInvalid]="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">
+          <div *ngIf="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="loginForm.controls.email.errors.required">
+              Por favor digita el correo.
+            </div>
+
+            <div *ngIf="!loginForm.controls.email.errors.required && loginForm.controls.email.errors.email">
+              El correo no es válido.
+            </div>
+          </div>
+
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col>
+                <input [type]="passwordType" placeholder="Password" [(ngModel)]="password" name="password" formControlName="password" [class.myInvalid]="loginForm.controls.password.invalid  && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+              </ion-col>
+              <ion-col col-auto>
+                <button type="button" ion-button clear item-end (click)='showHidePassword()' class="icon_edge" [class.myInvalid]="loginForm.controls.password.invalid  && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+                  <ion-icon [name]="passwordIcon" style="font-size:3rem; padding: 0;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="loginForm.controls.password.errors.required">
+              Por favor digita la contraseña.
+            </div>
+          </div>
+
+        </ion-list>
+
+        <button ion-button block type="submit" [disabled]="!loginForm.valid">
+          Iniciar <ion-spinner class="sing_in_button_spinner" name="bubbles" *ngIf="loading_sing_in"></ion-spinner>
+        </button>
+
+        <button type="button" ion-button icon-end block color="light" (click)="loginUserWithGoogle()">
+          Iniciar sesión con Google
+          <ion-icon name="logo-google"></ion-icon>
+          <ion-spinner class="sing_in_google_button_spinner" name="bubbles" *ngIf="loading_sing_in_google"></ion-spinner>
+        </button>
+
+        <a href="#" class="texto_blanco">Olvide la contraseña</a>
+
+      </ion-card>
+
+      <p class="texto_blanco register">Si no tienes cuenta, puedes crear una!
+        <button type="button" ion-button color="secondary" (click)="registerUser()">Registrate!</button>
+      </p>
+    </form>
+
+  </div>
+
+  <div class="div_logo_lab">
+    <p class="texto_blanco text_logo_lab">by: <img class="logo_lab" src="../assets/img/logo_lab.png" width="80">
+  </div>
+
+</ion-content>

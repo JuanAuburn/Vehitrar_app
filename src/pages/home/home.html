@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only color="dark" menuToggle>
+        <ion-icon name="ios-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>Mis vehículos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="dark" (click)="refresh()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [class.editOnStyleBody]="editOn" [class.editOffStyleBody]="!editOn">
+
+  <ion-toolbar class="toolbar">
+
+    <ion-grid class="toolbar1" [class.editOnStyle1]="editOn" [class.editOffStyle1]="!editOn">
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="secondary" (click)="newVehicle()">
+            Nuevo
+            <ion-icon name="md-add-circle" end></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block color="primary" (click)="editVehicles()">
+            Editar
+            <ion-icon name="build" end></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="toolbar2" [class.editOnStyle2]="!editOn" [class.editOffStyle2]="editOn">
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="primary" (click)="editVehicles()">
+            Editar
+            <ion-icon name="build" end></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-auto>
+          <button ion-button icon-only color="light" (click)="editVehicles()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+
+  <div *ngFor="let vehicle of vehicles">
+    <button class="vehicleItem" style="width: 100%">
+      <ion-grid>
+        <ion-row align-items-center>
+          <ion-col col-4 col-md-3 col-lg-2 (click)="openVehicle(vehicle)">
+            <img class="vehicleItemImg" src="assets/imgs/types_of_vehicles/{{vehicle.type}}.png" alt="{{vehicle.type}}">
+          </ion-col>
+          <ion-col (click)="openVehicle(vehicle)">
+            <h2>{{ vehicle.name }}</h2>
+            <p>{{ vehicle.mileage }} / {{ vehicle.model }}</p>
+          </ion-col>
+          <ion-col col-auto *ngIf="!editOn" (click)="openVehicle(vehicle)">
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+          <ion-col col-auto *ngIf="editOn">
+            <button ion-button icon-only color="primary" *ngIf="editOn" (click)="editVehicle(vehicle)">
+              <ion-icon name="build"></ion-icon>
+            </button><br>
+            <button ion-button icon-only color="danger" *ngIf="editOn" (click)="deleteVehicle(vehicle)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,157 @@
+<ion-content padding class="body">
+  <span></span>
+
+  <ion-card class="editVehicle_form" text-center>
+    <ion-toolbar>
+      <ion-buttons start>
+        <button ion-button icon-only color="primary" (click)="checkAndAlert()" [class.disabled]="vehicle.name==null||vehicle.name=='' || vehicle.model==null||vehicle.model==0 || vehicle.type==null||this.vehicle.type==''">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Editar vehículo</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="dark" (click)="close()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-card-content>
+
+      <ion-item-divider color="light">Nombre del vehículo</ion-item-divider>
+      <ion-input [(ngModel)]="vehicle.name" type="text" placeholder="Honda sx ..."></ion-input>
+
+      <ion-item-divider color="light">Modelo del vehículo</ion-item-divider>
+      <ion-input [(ngModel)]="vehicle.model" type="number" placeholder="2018"></ion-input>
+
+      <ion-item-divider color="light">Kilometraje del vehículo</ion-item-divider>
+      <ion-input [(ngModel)]="vehicle.mileage" type="number" placeholder="20000"></ion-input>
+
+      <ion-item-divider color="light">Tipo de vehículo</ion-item-divider>
+
+      <ion-segment [(ngModel)]="type_vehicle" (click)="resetType()">
+        <ion-segment-button value="car" type="button">
+          Carro
+        </ion-segment-button>
+        <ion-segment-button value="motorcycle" type="button">
+          Motocicleta
+        </ion-segment-button>
+      </ion-segment>
+
+      <div [ngSwitch]="type_vehicle">
+        <ion-grid *ngSwitchCase="'car'">
+          <ion-row align-items-center>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Coupe'" (click)="selectVehicle('Coupe')">
+                <img src="assets/imgs/types_of_vehicles/Coupe.png" alt="Coupe">
+                <h2>Coupe</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Hatchback'" (click)="selectVehicle('Hatchback')">
+                <img src="assets/imgs/types_of_vehicles/Hatchback.png" alt="Hatchback">
+                <h2>Hatchback</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Sedan'" (click)="selectVehicle('Sedan')">
+                <img src="assets/imgs/types_of_vehicles/Sedan.png" alt="Sedan">
+                <h2>Sedan</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Wagon'" (click)="selectVehicle('Wagon')">
+                <img src="assets/imgs/types_of_vehicles/Wagon.png" alt="Wagon">
+                <h2>Wagon</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Convertible'" (click)="selectVehicle('Convertible')">
+                <img src="assets/imgs/types_of_vehicles/Convertible.png" alt="Convertible">
+                <h2>Convertible</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Van'" (click)="selectVehicle('Van')">
+                <img src="assets/imgs/types_of_vehicles/Van.png" alt="Van">
+                <h2>Van</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Crossover'" (click)="selectVehicle('Crossover')">
+                <img src="assets/imgs/types_of_vehicles/Crossover.png" alt="Crossover">
+                <h2>Crossover</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'SUV'" (click)="selectVehicle('SUV')">
+                <img src="assets/imgs/types_of_vehicles/SUV.png" alt="SUV">
+                <h2>SUV</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Truck'" (click)="selectVehicle('Truck')">
+                <img src="assets/imgs/types_of_vehicles/Truck.png" alt="Truck">
+                <h2>Truck</h2>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngSwitchCase="'motorcycle'">
+          <ion-row align-items-center>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Cross'" (click)="selectVehicle('Cross')">
+                <img src="assets/imgs/types_of_vehicles/Cross.png" alt="Cross">
+                <h2>Cross</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'DualSport'" (click)="selectVehicle('DualSport')">
+                <img src="assets/imgs/types_of_vehicles/DualSport.png" alt="DualSport">
+                <h2>DualSport</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Standard'" (click)="selectVehicle('Standard')">
+                <img src="assets/imgs/types_of_vehicles/Standard.png" alt="Standard">
+                <h2>Standard</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Scooter'" (click)="selectVehicle('Scooter')">
+                <img src="assets/imgs/types_of_vehicles/Scooter.png" alt="Scooter">
+                <h2>Scooter</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Sport'" (click)="selectVehicle('Sport')">
+                <img src="assets/imgs/types_of_vehicles/Sport.png" alt="Sport">
+                <h2>Sport</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Cruiser'" (click)="selectVehicle('Cruiser')">
+                <img src="assets/imgs/types_of_vehicles/Cruiser.png" alt="Cruiser">
+                <h2>Cruiser</h2>
+              </ion-card>
+            </ion-col>
+            <ion-col col-6 col-sm-4 col-md-3>
+              <ion-card class="type_car" [class.type_car_selected]="vehicle.type == 'Touring'" (click)="selectVehicle('Touring')">
+                <img src="assets/imgs/types_of_vehicles/Touring.png" alt="Touring">
+                <h2>Touring</h2>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+
+    <button ion-button color="primary" class="button" (click)="checkAndAlert()" [disabled]="vehicle.name==null||vehicle.name=='' || vehicle.model==null||vehicle.model==0 || vehicle.type==null||this.vehicle.type==''">
+      <div class="center-vertical-horizontal">
+        Guardar Cambios &nbsp; <ion-spinner class="button-spinner editVehicle_button_spinner" name="bubbles" *ngIf="loading_set"></ion-spinner>
+      </div>
+    </button>
+  </ion-card>
+
+</ion-content>

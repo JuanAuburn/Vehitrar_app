@@ -1,0 +1,51 @@
+<ion-content padding class="body">
+  <span></span>
+
+  <ion-card class="newRefuel_form" text-center>
+
+    <ion-card-header text-center>
+      Nuevo repostado
+      <ion-icon class="closeButton" (click)="close()" name="close"></ion-icon>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item-divider color="light">Cantidad en galones</ion-item-divider>
+      <ion-input [(ngModel)]="refuel.gallons" type="number" placeholder="3.5"></ion-input>
+
+      <ion-item-divider color="light">Kilometraje actual del vehículo</ion-item-divider>
+      <ion-input [(ngModel)]="refuel.mileage" type="number" placeholder="{{vehicle.mileage}}"></ion-input>
+
+      <ion-item-divider color="light">Precio del repostado</ion-item-divider>
+      <ion-input [(ngModel)]="refuel.price" type="number" placeholder="32500"></ion-input>
+
+      <ion-item-divider color="light">Fecha del repostado</ion-item-divider>
+      <ion-item>
+        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="YYYY-MM-DD HH:mm" max="{{dateNow}}" [(ngModel)]="date" (ngModelChange)="updateDate()"></ion-datetime>
+      </ion-item>
+
+      <ion-item-divider color="light">Tipo de combustible</ion-item-divider>
+      <ion-list radio-group [(ngModel)]="refuel.gasolineType">
+        <ion-item>
+          <ion-label>Corriente</ion-label>
+          <ion-radio value="corriente"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Extra</ion-label>
+          <ion-radio value="extra"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+
+    <div (click)="checkAndAlert()">
+      <button ion-button color="secondary" class="button" (click)="addRefuel()" [disabled]="refuel.gallons==null||refuel.gallons==0 || refuel.mileage==null||refuel.mileage==0 || refuel.price==null||this.refuel.price==0 || refuel.timestamp==null||this.refuel.timestamp==0">
+        <div class="center-vertical-horizontal">
+          Añadir &nbsp; <ion-spinner class="button-spinner newRefuel_button_spinner" name="bubbles" *ngIf="loading_add"></ion-spinner>
+        </div>
+      </button>
+    </div>
+
+  </ion-card>
+
+</ion-content>
